@@ -23,8 +23,8 @@ A Node.js/Express backend for a music streaming application. This project provid
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repo-url>
-   cd music-streaming-backend
+   git clone <https://github.com/jawahargovindasamy/Music-Streaming-Application-Backend>
+   cd Music-Streaming-Application-Backend
    ```
 2. Install dependencies:
    ```bash
