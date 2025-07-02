@@ -3,7 +3,7 @@ import Artist from "../Models/artistModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sendEmail from "../Utils/mailer.js";
-import { generateResetEmailTemplate } from '../Utils/emailTemplates.js';
+import { generateResetEmailTemplate } from "../Utils/emailTemplates.js";
 
 export const registerUser = async (req, res) => {
   try {
@@ -116,7 +116,7 @@ export const forgotPassword = async (req, res) => {
     }
 
     const tokenExpiry = process.env.RESET_TOKEN_EXPIRY || "1h";
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+    const frontendUrl = "https://soniqueapp.netlify.app/";
     const appName = process.env.APP_NAME || "Your Application";
 
     // Create a token valid for 1 hour
@@ -128,13 +128,18 @@ export const forgotPassword = async (req, res) => {
     const resetLink = `${frontendUrl}/reset-password/${user._id}/${token}`;
 
     const emailContent = generateResetEmailTemplate(
-      user.username, 
-      resetLink, 
-      appName, 
+      user.username,
+      resetLink,
+      appName,
       tokenExpiry
     );
 
-    await sendEmail(user.email, emailContent.subject, emailContent.text, emailContent.html);
+    await sendEmail(
+      user.email,
+      emailContent.subject,
+      emailContent.text,
+      emailContent.html
+    );
 
     res.status(200).json({
       message: "Password reset link sent to your email",
@@ -156,14 +161,11 @@ export const resetPassword = async (req, res) => {
 
     console.log(token);
     console.log(password);
-    
-    
 
     // Verify token
     try {
-      const response=jwt.verify(token, process.env.JWT_SECRET);
+      const response = jwt.verify(token, process.env.JWT_SECRET);
       console.log(response);
-      
     } catch (error) {
       return res.status(401).json({ message: "Invalid or expired token1" });
     }
