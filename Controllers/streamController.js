@@ -59,7 +59,7 @@ export const recentlyPlayed = async (req, res) => {
     const recentlyPlayedSongs = uniqueSongs;
 
     if (!recentlyPlayedSongs || recentlyPlayedSongs.length === 0) {
-      return res.status(404).json({ message: "No recently played songs found" });
+      return res.status(200).json({ message: "No recently played songs found" , data: []});
     }
 
     const formattedSongs = recentlyPlayedSongs.map((song) => ({
