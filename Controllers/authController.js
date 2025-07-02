@@ -116,7 +116,7 @@ export const forgotPassword = async (req, res) => {
     }
 
     const tokenExpiry = process.env.RESET_TOKEN_EXPIRY || "1h";
-    const frontendUrl = "https://soniqueapp.netlify.app/";
+    const frontendUrl = "https://soniqueapp.netlify.app";
     const appName = process.env.APP_NAME || "Your Application";
 
     // Create a token valid for 1 hour
