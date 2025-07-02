@@ -9,7 +9,6 @@ import adminRoute from "./Routes/adminRoute.js";
 import artistRoute from "./Routes/artistRoute.js";
 import userRoute from "./Routes/userRoute.js";
 import streamRoute from "./Routes/streamRoute.js";
-import searchRoute from "./Routes/searchRoute.js";
 import playlistRoute from "./Routes/playlistRoutes.js";
 
 dotenv.config();
@@ -36,7 +35,6 @@ app.use("/api/album", albumRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/artist", artistRoute);
 app.use("/api/stream", streamRoute);
-app.use("/api/search", searchRoute);
 app.use("/api/playlist", playlistRoute);
 
 app.listen(port, () => {
